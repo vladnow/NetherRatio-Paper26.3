@@ -1,0 +1,33 @@
+{
+  "candidate_project_name": "NetherRatio Port",
+  "summary": "Customize Nether portal coordinate ratios, world pairs and offsets on Paper 26.3.",
+  "version_number": "3.0.3-paper26.3.1",
+  "version_type": "beta",
+  "game_versions": [
+    "26.3"
+  ],
+  "loaders": [
+    "paper"
+  ],
+  "java": 25,
+  "license": "GPL-3.0-only",
+  "client_side": "unsupported",
+  "server_side": "required",
+  "categories": [
+    "utility",
+    "management"
+  ],
+  "upstream_url": "https://github.com/ZyanKLee/NetherRatio",
+  "authors_to_credit": [
+    "xDxRAx",
+    "ZyanKLee",
+    "NetherRatio Team"
+  ],
+  "modrinth_contains_ai_generated_content": true,
+  "publication_status": "github_fork_created_release_prepared",
+  "marketplace_eligibility": "conditional; see PUBLICATION.ru.md",
+  "fork_source_url": "https://github.com/vladnow/NetherRatio-Paper26.3",
+  "fork_support_url": "https://github.com/vladnow/NetherRatio-Paper26.3/issues",
+  "primary_file": "NetherRatio-3.0.3-paper26.3.1.jar",
+  "complete_source": "NetherRatio-3.0.3-paper26.3.1-source.zip"
+}

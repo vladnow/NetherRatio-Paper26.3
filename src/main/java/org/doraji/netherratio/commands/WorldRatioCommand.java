@@ -7,6 +7,7 @@ import org.bukkit.entity.Player;
 import org.doraji.netherratio.NetherRatio;
 import org.doraji.netherratio.util.CoordinateMath;
 import org.jetbrains.annotations.NotNull;
+import java.util.Locale;
 
 /**
  * Command executor for the /netherratio command.
@@ -44,7 +45,8 @@ public class WorldRatioCommand implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
 
-        if (!sender.hasPermission("netherratio.netherratio")) {
+        boolean calculator = args.length > 0 && "calc".equalsIgnoreCase(args[0]);
+        if (!sender.hasPermission(calculator ? "netherratio.calc" : "netherratio.netherratio")) {
             sender.sendMessage(plugin.getMessagesManager().getMessage("command.no-permission"));
             return true;
         }
@@ -54,7 +56,7 @@ public class WorldRatioCommand implements CommandExecutor {
             return handleListCommand(sender);
         }
 
-        String subcommand = args[0].toLowerCase();
+        String subcommand = args[0].toLowerCase(Locale.ROOT);
 
         switch (subcommand) {
             case "list":
@@ -209,6 +211,9 @@ public class WorldRatioCommand implements CommandExecutor {
             try {
                 x = Double.parseDouble(args[1]);
                 z = Double.parseDouble(args[2]);
+                if (!Double.isFinite(x) || !Double.isFinite(z)) {
+                    throw new NumberFormatException("Coordinates must be finite");
+                }
                 worldName = player.getWorld().getName();
             } catch (NumberFormatException e) {
                 sender.sendMessage(plugin.getMessagesManager().getMessage("command.calc-invalid-coords"));
@@ -242,11 +247,11 @@ public class WorldRatioCommand implements CommandExecutor {
             targetX = CoordinateMath.toNether(x, ratio, plugin.getConfigManager().getOffsetXForWorld(worldName));
             targetZ = CoordinateMath.toNether(z, ratio, plugin.getConfigManager().getOffsetZForWorld(worldName));
             java.util.Map<String, String> replacements = new java.util.HashMap<>();
-            replacements.put("x1", String.format("%.1f", x));
-            replacements.put("z1", String.format("%.1f", z));
+            replacements.put("x1", String.format(Locale.ROOT, "%.1f", x));
+            replacements.put("z1", String.format(Locale.ROOT, "%.1f", z));
             replacements.put("world1", worldName);
-            replacements.put("x2", String.format("%.1f", targetX));
-            replacements.put("z2", String.format("%.1f", targetZ));
+            replacements.put("x2", String.format(Locale.ROOT, "%.1f", targetX));
+            replacements.put("z2", String.format(Locale.ROOT, "%.1f", targetZ));
             replacements.put("world2", targetWorldName);
             sender.sendMessage(plugin.getMessagesManager().getMessage("command.calc-result-to-nether", replacements));
         } else if (world.getEnvironment() == org.bukkit.World.Environment.NETHER) {
@@ -261,11 +266,11 @@ public class WorldRatioCommand implements CommandExecutor {
             targetX = CoordinateMath.toOverworld(x, ratio, plugin.getConfigManager().getOffsetXForNetherWorld(worldName));
             targetZ = CoordinateMath.toOverworld(z, ratio, plugin.getConfigManager().getOffsetZForNetherWorld(worldName));
             java.util.Map<String, String> replacements = new java.util.HashMap<>();
-            replacements.put("x1", String.format("%.1f", x));
-            replacements.put("z1", String.format("%.1f", z));
+            replacements.put("x1", String.format(Locale.ROOT, "%.1f", x));
+            replacements.put("z1", String.format(Locale.ROOT, "%.1f", z));
             replacements.put("world1", worldName);
-            replacements.put("x2", String.format("%.1f", targetX));
-            replacements.put("z2", String.format("%.1f", targetZ));
+            replacements.put("x2", String.format(Locale.ROOT, "%.1f", targetX));
+            replacements.put("z2", String.format(Locale.ROOT, "%.1f", targetZ));
             replacements.put("world2", targetWorldName);
             sender.sendMessage(plugin.getMessagesManager().getMessage("command.calc-result-to-overworld", replacements));
         } else {
@@ -276,3 +281,4 @@ public class WorldRatioCommand implements CommandExecutor {
         return true;
     }
 }
+

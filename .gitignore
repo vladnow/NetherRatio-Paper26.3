@@ -1,2 +1,10 @@
 target/
 reports/
+.gradle/
+build/
+dist/
+verification/runtime/
+verification/results/
+verification/classes/
+*.iml
+.idea/

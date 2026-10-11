@@ -47,7 +47,7 @@ public class PortalTravelListener implements Listener {
      * 
      * @param event The PlayerPortalEvent
      */
-    @EventHandler(priority = EventPriority.HIGH)
+    @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
     public void onPlayerPortal(PlayerPortalEvent event) {
         if (event.getCause() != PlayerTeleportEvent.TeleportCause.NETHER_PORTAL) {
             return;
@@ -72,7 +72,7 @@ public class PortalTravelListener implements Listener {
      * 
      * @param event The EntityPortalEvent
      */
-    @EventHandler(priority = EventPriority.HIGH)
+    @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
     public void onEntityPortal(EntityPortalEvent event) {
         if (event.getPortalType() != PortalType.NETHER) {
             return;

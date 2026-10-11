@@ -1,3 +1,12 @@
+# Unofficial port: 3.0.3-paper26.3.1 — 2026-10-11
+
+- Target Paper 26.3 and Java 25; retain upstream configuration and translations.
+- Fix calculator access without administrative permissions and reject non-finite inputs.
+- Use locale-independent decimal formatting for calculator output.
+- Preserve cancelled player/entity portal events.
+- Add Gradle build, regression checks and complete GPLv3 source/release bundles.
+- Remove unverified Folia declaration; label the release Beta pending client gameplay checks.
+
 # Changelog
 
 All notable changes to this project will be documented in this file.
@@ -211,5 +220,6 @@ Merge
 ### Fixed
 
 - Update version in plugin.yml to maintain compatibility with API version
+
 
 

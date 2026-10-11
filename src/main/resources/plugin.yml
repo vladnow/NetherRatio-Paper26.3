@@ -1,8 +1,10 @@
 name: NetherRatio
-version: '3.0.3'
+version: '${version}'
 main: org.doraji.netherratio.NetherRatio
-api-version: '26.2'
-folia-supported: true
+api-version: '26.3'
+authors: [xDxRAx, ZyanKLee]
+description: Unofficial Paper 26.3 compatibility port of NetherRatio.
+website: https://github.com/vladnow/NetherRatio-Paper26.3
 commands:
   netherratio:
     description: Manage nether-overworld ratios and calculate portal coordinates.
@@ -14,7 +16,6 @@ commands:
       /netherratio calc - Calculate coordinates at your position
       /netherratio calc <x> <z> - Calculate coordinates
       /netherratio reload - Reload configuration
-    permission: netherratio.netherratio
 
 permissions:
   netherratio.netherratio:

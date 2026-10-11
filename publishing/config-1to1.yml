@@ -1,0 +1,10 @@
+language: en
+value: 1
+coordinate-bounds:
+  enabled: false
+  min-x: -29999968
+  max-x: 29999968
+  min-z: -29999968
+  max-z: 29999968
+world-pairs:
+  world: world_nether
